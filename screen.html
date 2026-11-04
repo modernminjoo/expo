@@ -130,12 +130,15 @@ body.still .st,body.st .open,body.still .st .open,body.still .st .v{transition:n
 .s-close .slogan{position:absolute;left:94px;top:270px;width:1180px;font-size:116px;line-height:1.14;color:var(--ink)}
 .s-close .slogan em{color:var(--blue)}
 .s-close .slogan.ph{font-family:"Pretendard Variable";font-size:40px;color:var(--mute);border:3px dashed var(--line);padding:50px}
-.qr{position:absolute;right:100px;top:150px;width:400px}
-.qr .box{width:400px;height:400px;border:4px solid var(--blue);border-radius:28px;background:#fff;display:flex;align-items:center;justify-content:center;padding:26px;font-size:30px;font-weight:700;color:var(--mute)}
-.qr .box.ph{border-style:dashed;border-color:#B7C3DA;background:var(--paper)}
+/* 11/04 마무리 QR: 첫 화면 부제 카드와 짝이 되는 블루→퍼플 카드(시안 2). QR 400 → 472px, 문구는 작은 줄 + 큰 줄 */
+.qr{position:absolute;right:64px;top:64px;width:600px;height:800px;border-radius:32px;background:linear-gradient(135deg,#2F6BFF 0%,#5B4BE0 55%,#7B3FC9 100%);box-shadow:0 34px 60px -28px rgba(91,75,224,.6);padding:52px 64px 0}
+.qr .box{width:472px;height:472px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;padding:26px;font-size:30px;font-weight:700;color:var(--mute)}
+.qr .box.ph{border:3px dashed #B7C3DA;background:var(--paper)}
 .qr .box img{width:100%;height:100%}
-.qr .cap{margin-top:24px;font-size:32px;font-weight:800;line-height:1.3;letter-spacing:-.02em}
-.qr .cap small{display:block;margin-top:8px;font-size:23px;font-weight:500;color:var(--mute)}
+.qr .cap{margin-top:36px;color:#fff}
+.qr .cap .lb{display:block;font-size:31px;font-weight:800;color:#E6DEFF;letter-spacing:-.03em}
+.qr .cap b{display:block;margin-top:6px;font-size:64px;font-weight:860;line-height:1.1;letter-spacing:-.045em}
+.qr .cap .hint{display:block;margin-top:14px;font-size:23px;font-weight:500;color:rgba(255,255,255,.75)}
 .ticker{position:absolute;left:0;right:0;bottom:0;height:170px;overflow:hidden}
 .ticker .track{display:flex;height:100%;width:max-content;animation:tick 60s linear infinite}
 .ticker .chip{display:flex;align-items:center;padding:0 54px;font-family:var(--disp);font-weight:860;font-size:48px;letter-spacing:-.04em;white-space:nowrap}
@@ -163,11 +166,11 @@ body.still .ticker .track{animation:none}
 /* ===== 콘텐츠: v1(src/sign_template.html)의 DATA를 build_v2.py가 이 자리에 넣습니다 ===== */
 const DATA = {
   asOf: "2026. 10. 1. 기준", // 10/28부터 화면에 표시하지 않음(기록용)
-  total: 299,             // 본회의 통과 법안 수 — 10/28부터 화면에 안 나옴. build.py 점검용
+  total: 298,             // 본회의 통과 법안 수 — 10/28부터 화면에 안 나옴. build.py 점검용
   sessions: 23,           // 본회의 의결일 수 — 화면에 안 나옴. build.py 점검용
-  months: [49,38,42,44,35,6,4,42,18,21],   // 월별 통과 건수 — 10/28 월별 장면 삭제로 화면에 안 나옴. build.py 점검용
+  months: [49,37,42,44,35,6,4,42,18,21],   // 월별 통과 건수 — 10/28 월별 장면 삭제로 화면에 안 나옴. build.py 점검용
   slogan: "대한민국의 다음 페이지,<br><em>국민과 함께</em>",   // 10/28 확정. 비어 있으면 '슬로건 자리'로 표시
-  qrCaption: "휴대폰으로 더불어민주당<br>2026년 중점추진법안 보기",   // 마무리 장면 QR 아래 문구 (10/28)
+  qrCaption: "더불어민주당 2026년 중점추진법안<br>성과 한눈에 보기",   // 마무리 장면 QR 아래 문구 (11/04 변경. v5는 <br> 앞을 작게, 뒤를 크게)
   footLabel: "2026 대한민국 업데이트",   // 장면 꼬리말 앞부분 (10/28: 오프닝 main 문구로 통일)
   qrImage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMzAiIGhlaWdodD0iMzMwIiBjbGFzcz0ic2Vnbm8iPjxnIHRyYW5zZm9ybT0ic2NhbGUoMTApIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDMzdjMzaC0zM3oiLz48cGF0aCBjbGFzcz0icXJsaW5lIiBzdHJva2U9IiMwZTFiM2EiIGQ9Ik0yIDIuNWg3bTEgMGgybTQgMGgxbTEgMGgxbTEgMGgxbTMgMGg3bS0yOSAxaDFtNSAwaDFtMiAwaDNtMiAwaDNtMSAwaDFtMyAwaDFtNSAwaDFtLTI5IDFoMW0xIDBoM20xIDBoMW0zIDBoMW0xIDBoMm00IDBoMW0zIDBoMW0xIDBoM20xIDBoMW0tMjkgMWgxbTEgMGgzbTEgMGgxbTMgMGgxbTEgMGgybTMgMGgxbTIgMGgxbTEgMGgxbTEgMGgzbTEgMGgxbS0yOSAxaDFtMSAwaDNtMSAwaDFtMSAwaDJtMyAwaDFtMSAwaDFtMSAwaDRtMSAwaDFtMSAwaDNtMSAwaDFtLTI5IDFoMW01IDBoMW0xIDBoMm0yIDBoMm0zIDBoMW00IDBoMW01IDBoMW0tMjkgMWg3bTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGg3bS0xNSAxaDFtMSAwaDNtLTE4IDFoN20zIDBoM20xIDBoMW0zIDBoMW0zIDBoMm0zIDBoMW0tMjAgMWgybTYgMGgybTIgMGgybTEgMGgxbTEgMGgxbTEgMGgxbS0yNyAxaDFtMSAwaDNtMyAwaDJtMSAwaDJtMSAwaDJtMiAwaDRtMSAwaDFtLTI2IDFoNm0yIDBoMW0yIDBoM20xIDBoMW0zIDBoNW0xIDBoMW0xIDBoMW0tMjggMWgxbTMgMGgxbTEgMGgzbTUgMGg4bTEgMGgxbTIgMGgzbS0yNyAxaDNtMiAwaDJtMSAwaDFtMSAwaDJtMiAwaDFtMSAwaDVtMSAwaDJtMSAwaDJtLTI5IDFoMW0xIDBoMm0xIDBoM20yIDBoNW0xIDBoMW0xIDBoMW0xIDBoMW0xIDBoMm0tMjQgMWgzbTEgMGgxbTQgMGgxbTIgMGgzbTEgMGgxbTMgMGgzbTEgMGgybS0yNSAxaDdtNCAwaDJtMSAwaDFtMiAwaDFtNiAwaDJtMSAwaDFtLTI5IDFoMm0zIDBoMW0xIDBoMm0yIDBoN20xIDBoMW0xIDBoOG0tMjkgMWgxbTEgMGg1bTUgMGgybTMgMGgxbTQgMGgybTIgMGgxbS0yNyAxaDFtMiAwaDNtMSAwaDFtMyAwaDNtMiAwaDFtMSAwaDJtMiAwaDJtMSAwaDFtMSAwaDJtLTI5IDFoMW0xIDBoMm0yIDBoMW0xIDBoMm0xIDBoMm0xIDBoMW0yIDBoMW0yIDBoNW0xIDBoM20tMjEgMWgybTEgMGgxbTEgMGgxbTIgMGgybTIgMGgxbTMgMGgybTEgMGgybS0yOSAxaDdtMSAwaDFtMSAwaDFtMSAwaDFtMiAwaDFtMSAwaDFtMSAwaDJtMSAwaDFtMSAwaDFtLTI1IDFoMW01IDBoMW0xIDBoOG0xIDBoNG0zIDBoMm0tMjYgMWgxbTEgMGgzbTEgMGgxbTEgMGgybTIgMGgybTIgMGgxbTMgMGg3bS0yNyAxaDFtMSAwaDNtMSAwaDFtMSAwaDRtMSAwaDNtMiAwaDRtMSAwaDFtMiAwaDFtLTI3IDFoMW0xIDBoM20xIDBoMW0xIDBoM200IDBoMm0yIDBoNm0xIDBoMm0tMjggMWgxbTUgMGgxbTEgMGgzbTIgMGgzbTIgMGg1bTEgMGgybTEgMGgxbS0yOCAxaDdtNiAwaDNtMSAwaDFtMSAwaDFtMiAwaDFtMSAwaDFtMSAwaDEiLz48L2c+PC9zdmc+Cg==",            // QR 이미지 주소(data URL 가능). 비어 있으면 'QR 자리'로 표시
 
@@ -326,6 +329,8 @@ S.push({dur:DATA.life.length*LIFE_STEP, life:true, html:`
 </section>`});
 
 /* 7 마무리 */
+// 11/04 QR 문구: DATA.qrCaption 을 <br> 앞(작은 줄)·뒤(큰 줄)로 나눔
+const qrCap = c => { const [a, b] = c.split(/<br\s*\/?>/); return b ? `<small class="lb">${a}</small><b>${b}</b>` : `<b>${a}</b>`; };
 const chips = ALL.map((h,i)=>`<div class="chip c${i%6}">${h.k}</div>`).join('');
 // 마무리 (10/29 최종 7초)
 S.push({dur:7000, html:`
@@ -334,7 +339,7 @@ S.push({dur:7000, html:`
   <div class="slogan disp rv ${DATA.slogan?'':'ph'}" style="--d:.2">${DATA.slogan || '슬로건 자리 (문구 확정 후 입력)'}</div>
   <div class="qr rv" style="--d:.5">
     <div class="box ${DATA.qrImage?'':'ph'}">${DATA.qrImage?`<img src="${DATA.qrImage}" alt="QR">`:'QR 코드 자리'}</div>
-    <div class="cap">${DATA.qrCaption}<small>카메라로 QR을 비춰 주세요</small></div>
+    <div class="cap">${qrCap(DATA.qrCaption)}<span class="hint">카메라로 QR을 비춰 주세요</span></div>
   </div>
   <div class="ticker"><div class="track">${chips}${chips}</div></div>
 </section>`});
